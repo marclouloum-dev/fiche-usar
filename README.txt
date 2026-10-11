@@ -15,3 +15,6 @@ La fiche fonctionne hors connexion après sa première ouverture grâce au Servi
 - manifest.webmanifest : configuration PWA
 - sw.js : fonctionnement hors connexion et cache
 - icon.svg : icône de l'application
+
+
+Ordre d’utilisation : remplir la fiche, imprimer/enregistrer en PDF dans Actions, puis préparer l’e-mail à la fin du formulaire. Le PDF doit être joint manuellement dans Outlook.

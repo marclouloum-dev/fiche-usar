@@ -146,9 +146,17 @@ textarea{min-height:70px;resize:vertical}.choices{display:flex;gap:16px;flex-wra
 </div><label style="margin-top:12px">D13. Autres besoins logistiques<textarea data-f="D13"></textarea></label></div>
 </section>
 
+
+
+<section>
+<h2>Actions</h2>
+<div id="status" class="status">Les rubriques conditionnelles apparaissent automatiquement.</div>
+<div class="actions"><button class="primary" onclick="window.print()">Imprimer / enregistrer en PDF</button><button onclick="resetForm()">Réinitialiser la fiche</button></div>
+</section>
+
 <section class="email-only">
 <h2>Envoi par e-mail</h2>
-<p class="muted">Aucun destinataire n’est prédéfini. Saisissez une ou plusieurs adresses séparées par une virgule ou un point-virgule.</p>
+<p class="muted">Après avoir généré et enregistré le PDF dans la rubrique Actions, saisissez une ou plusieurs adresses e-mail séparées par une virgule ou un point-virgule.</p>
 <div class="grid">
 <label>Destinataire(s)
 <textarea id="emailRecipients" rows="2" placeholder="destinataire@exemple.fr, autre@exemple.fr"></textarea>
@@ -165,16 +173,10 @@ Veuillez trouver ci-joint la fiche technique de détachement USAR complétée.
 Cordialement.</textarea>
 </label>
 <div class="actions">
-<button class="primary" type="button" onclick="prepareEmail()">Ouvrir la messagerie</button>
+<button class="primary" type="button" onclick="prepareEmail()">Préparer l’e-mail</button>
 </div>
-<p class="status">Important : pour joindre le PDF, cliquez d’abord sur « Imprimer / enregistrer en PDF » dans la rubrique Actions et enregistrez le fichier. Ensuite, ouvrez votre messagerie, joignez ce PDF au message puis envoyez-le. Le navigateur ne permet pas à un lien e-mail classique de joindre automatiquement un fichier.</p>
+<p class="status">Étape 1 : dans la rubrique Actions juste au-dessus, cliquez sur « Imprimer / enregistrer en PDF » et enregistrez le fichier sur votre ordinateur. Étape 2 : cliquez sur « Préparer l’e-mail ». Étape 3 : dans Outlook, joignez manuellement le PDF enregistré, puis envoyez le message. Le navigateur ne permet pas à un lien e-mail classique de joindre automatiquement un fichier.</p>
 <div id="emailStatus" class="status" role="status" aria-live="polite"></div>
-</section>
-
-<section>
-<h2>Actions</h2>
-<div id="status" class="status">Les rubriques conditionnelles apparaissent automatiquement.</div>
-<div class="actions"><button class="primary" onclick="window.print()">Imprimer / enregistrer en PDF</button><button onclick="resetForm()">Réinitialiser la fiche</button></div>
 </section>
 </main>
 <script>

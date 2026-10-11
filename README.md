@@ -18,6 +18,9 @@ L'application pourra ensuite être installée depuis un smartphone compatible PW
 ## Envoi par e-mail
 - Saisir librement une ou plusieurs adresses e-mail dans la rubrique « Envoi par e-mail ».
 - Cliquer sur « Imprimer / enregistrer en PDF » et enregistrer la fiche complétée.
-- Revenir à la fiche, cliquer sur « Ouvrir la messagerie », puis joindre manuellement le PDF enregistré.
+- Revenir à la fiche, cliquer sur « Préparer l’e-mail », puis joindre manuellement le PDF enregistré.
 - Aucun destinataire n’est prédéfini et aucun service d’envoi externe n’est nécessaire.
 - L’ouverture de la messagerie est préparée par un lien `mailto:` ; les navigateurs ne permettent pas à ce lien de joindre automatiquement un fichier local.
+
+
+Ordre d’utilisation : remplir la fiche, imprimer/enregistrer en PDF dans Actions, puis préparer l’e-mail à la fin du formulaire. Le PDF doit être joint manuellement dans Outlook.
