@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#244a78">
+<meta name="description" content="Fiche technique de détachement USAR interactive">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Fiche technique de détachement USAR — interactive</title>
+<style>
+*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f3f5f8;color:#172033}
+main{max-width:1100px;margin:auto;padding:24px}.head{background:#fff;padding:20px;border-radius:12px;margin-bottom:16px;border:1px solid #d8dde6}
+h1{font-size:24px;margin:0 0 5px}h2{font-size:18px;margin:0 0 14px;border-bottom:2px solid #244a78;padding-bottom:7px}
+h3{font-size:15px;margin:18px 0 10px}.muted{color:#667085;font-size:13px}
+section{background:#fff;border:1px solid #d8dde6;border-radius:12px;padding:18px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+label{font-weight:600;font-size:13px;display:block}input,textarea{width:100%;padding:9px;border:1px solid #bfc6d1;border-radius:7px;margin-top:5px;font-size:14px;background:#fff}
+textarea{min-height:70px;resize:vertical}.choices{display:flex;gap:16px;flex-wrap:wrap;margin-top:7px}.choices label{font-weight:500;display:flex;align-items:center;gap:6px}.choices input{width:auto;margin:0}
+.conditional{display:none;margin-top:14px;padding:14px;background:#f6f8fb;border-left:4px solid #244a78;border-radius:7px}.conditional.show{display:block}
+.progress{height:8px;background:#e6e9ee;border-radius:99px;overflow:hidden;margin-top:12px}.progress div{height:100%;background:#244a78;width:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}button{border:1px solid #bfc6d1;background:#fff;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}button.primary{background:#244a78;color:white;border-color:#244a78}
+.status{font-size:13px;color:#667085;margin-top:10px}
+@media(max-width:700px){main{padding:10px}.grid,.grid3{grid-template-columns:1fr}}
+@media print{body{background:#fff}main{max-width:none;padding:0}.actions,.progress,.status,.email-only{display:none!important}section,.head{break-inside:avoid;border:1px solid #999;box-shadow:none}.conditional.show{display:block}input,textarea,select{border:0!important;padding:2px!important;background:transparent!important;color:#000!important}section{break-inside:auto}}
+</style>
+</head>
+<body>
+<main>
+<div class="head">
+<h1>FICHE TECHNIQUE DE DÉTACHEMENT USAR</h1>
+<div class="muted">Formulaire dématérialisé interactif — d’après les pages 1 et 2 de l’Annexe B fournie.</div>
+<div class="progress"><div id="bar"></div></div>
+<div id="pct" class="status">0 % renseigné</div>
+</div>
+
+<section>
+<h2>1. Identification de l’équipe</h2>
+<div class="grid3">
+<div><label>A0. ID de l’équipe<input data-f="A0"></label></div>
+<div><label>A1. Pays<input data-f="A1"></label></div>
+<div><label>A2. Nom de l’équipe<input data-f="A2"></label></div>
+<div><label>A3. Nombre de personnes<input type="number" min="0" data-f="A3"></label></div>
+<div><label>A4. Nombre de chiens<input type="number" min="0" data-f="A4"></label></div>
+<div>
+<label>A5. Type d’équipe
+<select data-f="A5" id="A5">
+<option value="">— Sélectionner —</option>
+<option>Colonne</option>
+<option>Groupe</option>
+<option>Unité</option>
+<option>Autre</option>
+</select>
+</label>
+<div id="A5other" class="conditional" style="margin-top:8px;padding:8px">
+<label>Préciser le type d’équipe<input data-f="A5other"></label>
+</div>
+</div>
+</div>
+<h3>A6. Classification ou accréditation INSARAG</h3><div class="choices">
+<label><input type="radio" name="A6" value="Oui">Oui</label><label><input type="radio" name="A6" value="Non">Non</label></div>
+</section>
+
+<section>
+<h2>Éléments de réponse</h2>
+<div class="grid">
+<div><label>A7. Recherche technique</label><div class="choices"><label><input type="radio" name="A7" value="Oui">Oui</label><label><input type="radio" name="A7" value="Non">Non</label></div><input data-f="A7detail" placeholder="Précisions / capacités"></div>
+<div><label>A8. Recherche canine</label><div class="choices"><label><input type="radio" name="A8" value="Oui">Oui</label><label><input type="radio" name="A8" value="Non">Non</label></div><input data-f="A8detail" placeholder="Précisions / capacités"></div>
+<div><label>A9. Secours</label><div class="choices"><label><input type="radio" name="A9" value="Oui">Oui</label><label><input type="radio" name="A9" value="Non">Non</label></div><input data-f="A9detail" placeholder="Précisions / capacités"></div>
+<div><label>A10. Médical</label><div class="choices"><label><input type="radio" name="A10" value="Oui">Oui</label><label><input type="radio" name="A10" value="Non">Non</label></div><input data-f="A10detail" placeholder="Précisions / capacités"></div>
+<div><label>A11. Détection de matières dangereuses</label><div class="choices"><label><input type="radio" name="A11" value="Oui">Oui</label><label><input type="radio" name="A11" value="Non">Non</label></div><input data-f="A11detail" placeholder="Précisions / capacités"></div>
+<div><label>A12. Spécialiste risques bâtimentaires</label><div class="choices"><label><input type="radio" name="A12" value="Oui">Oui</label><label><input type="radio" name="A12" value="Non">Non</label></div><input type="number" min="0" data-f="A12number" placeholder="Nombre"></div>
+<div><label>A13. PC de colonne</label><div class="choices"><label><input type="radio" name="A13" value="Oui">Oui</label><label><input type="radio" name="A13" value="Non">Non</label></div><input data-f="A13detail" placeholder="Précisions / capacités"></div>
+<div><label>A14. Participation à la cellule 2D (C2D)</label><div class="choices"><label><input type="radio" name="A14" value="Oui">Oui</label><label><input type="radio" name="A14" value="Non">Non</label></div><input data-f="A14detail" placeholder="Précisions / capacités"></div>
+</div>
+<label style="margin-top:12px">A15. Autres capacités<textarea data-f="A15"></textarea></label>
+</section>
+
+<section>
+<h2>Informations sur l’arrivée sur zone</h2>
+<div class="grid3">
+<label>A16. Date d’arrivée prévue<input type="date" data-f="A16"></label>
+<label>A17. Heure d’arrivée prévue<input type="time" data-f="A17"></label>
+<label>A18. Point d’arrivée<input data-f="A18"></label>
+<label>A19. Type d’avion<input data-f="A19"></label>
+</div>
+</section>
+
+<section>
+<h2>Soutien demandé</h2>
+<h3>Auto-suffisance</h3>
+<div class="grid">
+<label>B1. Eau — jours<input type="number" min="0" data-f="B1"></label>
+<label>B2. Nourriture — jours<input type="number" min="0" data-f="B2"></label>
+<div><label>B3. Transport routier</label><div class="choices"><label><input type="radio" name="B3" value="Oui">Oui</label><label><input type="radio" name="B3" value="Non">Non</label></div></div>
+<div><label>B4. Matériels</label><div class="choices"><label><input type="radio" name="B4" value="Oui">Oui</label><label><input type="radio" name="B4" value="Non">Non</label></div></div>
+</div>
+<div id="trans" class="conditional"><h3>Transport — si B3 = Oui</h3><div class="grid"><label>B5. Nombre de personnes<input type="number" min="0" data-f="B5"></label><label>B6. Nombre de chiens<input type="number" min="0" data-f="B6"></label><label>B7. Matériel (tonnes)<input type="number" min="0" step=".1" data-f="B7"></label><label>B8. Matériel (m³)<input type="number" min="0" step=".1" data-f="B8"></label></div></div>
+<div id="mat" class="conditional"><h3>Besoins matériels — si B4 = Oui</h3><div class="grid3"><label>B9. Essence (litres/jours)<input type="number" min="0" data-f="B9"></label><label>B10. Gasoil (litres/jours)<input type="number" min="0" data-f="B10"></label><label>B11. Gaz de coupe à l’oxygène<input data-f="B11"></label><label>B12. Gaz de coupe au propane<input data-f="B12"></label><label>B13. Oxygène médical<input data-f="B13"></label><label>B14. Surface nécessaire pour le campement (m²)<input type="number" min="0" data-f="B14"></label></div><label style="margin-top:12px">B15. Autres besoins logistiques<textarea data-f="B15"></textarea></label></div>
+</section>
+
+<section>
+<h2>Contacts — membres de l’équipe</h2>
+<h3>Membres de l’équipe</h3>
+<div class="grid3">
+<div>
+<label>C1. Nom<input data-f="C1"></label>
+<label>C2. Mobile<input data-f="C2"></label>
+<label>C3. Fonction<input data-f="C3"></label>
+<label>C4. Email<input type="email" data-f="C4"></label>
+</div>
+<div>
+<label>C5. Nom<input data-f="C5"></label>
+<label>C6. Mobile<input data-f="C6"></label>
+<label>C7. Fonction<input data-f="C7"></label>
+<label>C8. Email<input type="email" data-f="C8"></label>
+</div>
+<div>
+<label>C9. Nom<input data-f="C9"></label>
+<label>C10. Mobile<input data-f="C10"></label>
+<label>C11. Fonction<input data-f="C11"></label>
+<label>C12. Email<input type="email" data-f="C12"></label>
+</div>
+</div>
+<h3>Camp de base</h3>
+<div class="grid"><label>Adresse (si connue)<input data-f="baseAddress"></label><label>Fréquence accueil<input data-f="baseFrequency"></label><label>Coordonnées GPS (si connues)<input data-f="baseGPS"></label><label>Rédigé par — Nom<input data-f="authorName"></label><label>Fonction<input data-f="authorFunction"></label></div>
+</section>
+
+<section>
+<h2>2. Informations sur le désengagement du détachement USAR</h2>
+<div class="muted">Détails du départ de l’équipe à remplir lorsque le désengagement est décidé.</div>
+<div class="grid3" style="margin-top:12px"><label>D1. Date de départ prévue<input type="date" data-f="D1"></label><label>D2. Heure de départ prévue<input type="time" data-f="D2"></label><label>D3. Point de départ<input data-f="D3"></label></div>
+<label style="margin-top:12px">D4. Information sur le vol ou le transport<textarea data-f="D4"></textarea></label>
+</section>
+
+<section>
+<h2>Aide au désengagement</h2>
+<div class="grid">
+<div><label>D5. Transport routier</label><div class="choices"><label><input type="radio" name="D5" value="Oui">Oui</label><label><input type="radio" name="D5" value="Non">Non</label></div></div>
+<div><label>D6. Demandes spéciales</label><div class="choices"><label><input type="radio" name="D6" value="Oui">Oui</label><label><input type="radio" name="D6" value="Non">Non</label></div></div>
+</div>
+<div id="dtrans" class="conditional"><h3>Transport — si D5 = Oui</h3><div class="grid"><label>D7. Nombre de personnes<input type="number" min="0" data-f="D7"></label><label>D8. Nombre de chiens<input type="number" min="0" data-f="D8"></label><label>D9. Matériel (tonnes)<input type="number" min="0" step=".1" data-f="D9"></label><label>D10. Matériels (m³)<input type="number" min="0" step=".1" data-f="D10"></label></div></div>
+<div id="spec" class="conditional"><h3>Demandes spéciales — si D6 = Oui</h3><div class="grid">
+<div><label>D11. Besoin d’aide au chargement ou déchargement ?</label><div class="choices"><label><input type="radio" name="D11" value="Oui">Oui</label><label><input type="radio" name="D11" value="Non">Non</label></div></div>
+<div><label>D12. Besoin d’hébergement au point de départ ?</label><div class="choices"><label><input type="radio" name="D12" value="Oui">Oui</label><label><input type="radio" name="D12" value="Non">Non</label></div></div>
+</div><label style="margin-top:12px">D13. Autres besoins logistiques<textarea data-f="D13"></textarea></label></div>
+</section>
+
+<section class="email-only">
+<h2>Envoi par e-mail</h2>
+<p class="muted">Aucun destinataire n’est prédéfini. Saisissez une ou plusieurs adresses séparées par une virgule ou un point-virgule.</p>
+<div class="grid">
+<label>Destinataire(s)
+<textarea id="emailRecipients" rows="2" placeholder="destinataire@exemple.fr, autre@exemple.fr"></textarea>
+</label>
+<label>Objet du message
+<input id="emailSubject" value="Fiche technique de détachement USAR" placeholder="Objet du message">
+</label>
+</div>
+<label style="margin-top:12px">Message
+<textarea id="emailBody" rows="3">Bonjour,
+
+Veuillez trouver ci-joint la fiche technique de détachement USAR complétée.
+
+Cordialement.</textarea>
+</label>
+<div class="actions">
+<button class="primary" type="button" onclick="prepareEmail()">Ouvrir la messagerie</button>
+</div>
+<p class="status">Important : pour joindre le PDF, cliquez d’abord sur « Imprimer / enregistrer en PDF » dans la rubrique Actions et enregistrez le fichier. Ensuite, ouvrez votre messagerie, joignez ce PDF au message puis envoyez-le. Le navigateur ne permet pas à un lien e-mail classique de joindre automatiquement un fichier.</p>
+<div id="emailStatus" class="status" role="status" aria-live="polite"></div>
+</section>
+
+<section>
+<h2>Actions</h2>
+<div id="status" class="status">Les rubriques conditionnelles apparaissent automatiquement.</div>
+<div class="actions"><button class="primary" onclick="window.print()">Imprimer / enregistrer en PDF</button><button onclick="resetForm()">Réinitialiser la fiche</button></div>
+</section>
+</main>
+<script>
+function radio(n){const e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:''}
+function update(){
+ document.getElementById('A5other').classList.toggle('show', document.getElementById('A5').value==='Autre');
+ document.getElementById('trans').classList.toggle('show',radio('B3')==='Oui');
+ document.getElementById('mat').classList.toggle('show',radio('B4')==='Oui');
+ document.getElementById('dtrans').classList.toggle('show',radio('D5')==='Oui');
+ document.getElementById('spec').classList.toggle('show',radio('D6')==='Oui');
+ const fs=[...document.querySelectorAll('[data-f]')], names=[...new Set([...document.querySelectorAll('input[type=radio][name]')].map(x=>x.name))];
+ let total=fs.length+names.length, done=fs.filter(x=>x.value.trim()).length+names.filter(n=>radio(n)).length;
+ let p=total?Math.round(done*100/total):0;
+ document.getElementById('bar').style.width=p+'%';document.getElementById('pct').textContent=p+' % renseigné';
+}
+function prepareEmail(){
+ const raw=document.getElementById('emailRecipients').value.trim();
+ const status=document.getElementById('emailStatus');
+ const recipients=raw.split(/[;,\n]+/).map(s=>s.trim()).filter(Boolean);
+ if(!recipients.length){status.textContent="Saisissez au moins une adresse e-mail.";return;}
+ const emailPattern=/^[^\s@,;]+@[^\s@,;]+\.[^\s@,;]+$/;
+ const invalid=recipients.filter(e=>!emailPattern.test(e));
+ if(invalid.length){status.textContent="Adresse(s) à vérifier : "+invalid.join(", ");return;}
+ const subject=document.getElementById('emailSubject').value.trim()||"Fiche technique de détachement USAR";
+ const body=document.getElementById('emailBody').value;
+ const url="mailto:"+recipients.map(encodeURIComponent).join(",")+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+ status.textContent="Ouverture de votre messagerie. Pensez à joindre le PDF enregistré au préalable.";
+ window.location.href=url;
+}
+function resetForm(){if(confirm('Réinitialiser toute la fiche ?')){document.querySelectorAll('input,textarea').forEach(e=>{if(e.type==='radio')e.checked=false;else e.value=''});update()}}
+document.addEventListener('input',update);document.addEventListener('change',update);update();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+}
+</script>
+</body></html>
