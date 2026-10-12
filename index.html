@@ -21,6 +21,8 @@ textarea{min-height:70px;resize:vertical}.choices{display:flex;gap:16px;flex-wra
 .progress{height:8px;background:#e6e9ee;border-radius:99px;overflow:hidden;margin-top:12px}.progress div{height:100%;background:#244a78;width:0}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}button{border:1px solid #bfc6d1;background:#fff;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}button.primary{background:#244a78;color:white;border-color:#244a78}
 .status{font-size:13px;color:#667085;margin-top:10px}
+.form-author{margin:20px 0 8px;padding:14px 8px;text-align:center;color:#667085;font-size:13px;border-top:1px solid #d8dde6}
+.form-author strong{color:#244a78;margin:0 4px}
 @media(max-width:700px){main{padding:10px}.grid,.grid3{grid-template-columns:1fr}}
 @media print{body{background:#fff}main{max-width:none;padding:0}.actions,.progress,.status,.email-only{display:none!important}section,.head{break-inside:avoid;border:1px solid #999;box-shadow:none}.conditional.show{display:block}input,textarea,select{border:0!important;padding:2px!important;background:transparent!important;color:#000!important}section{break-inside:auto}}
 </style>
@@ -178,6 +180,12 @@ Cordialement.</textarea>
 <p class="status">Étape 1 : dans la rubrique Actions juste au-dessus, cliquez sur « Imprimer / enregistrer en PDF » et enregistrez le fichier sur votre ordinateur. Étape 2 : cliquez sur « Préparer l’e-mail ». Étape 3 : dans Outlook, joignez manuellement le PDF enregistré, puis envoyez le message. Le navigateur ne permet pas à un lien e-mail classique de joindre automatiquement un fichier.</p>
 <div id="emailStatus" class="status" role="status" aria-live="polite"></div>
 </section>
+
+<footer class="form-author" aria-label="Auteur du formulaire">
+  <span>Formulaire conçu par</span>
+  <strong>Marc Louloum</strong>
+  <span>— SDIS 33</span>
+</footer>
 </main>
 <script>
 function radio(n){const e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:''}
