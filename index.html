@@ -21,15 +21,36 @@ textarea{min-height:70px;resize:vertical}.choices{display:flex;gap:16px;flex-wra
 .progress{height:8px;background:#e6e9ee;border-radius:99px;overflow:hidden;margin-top:12px}.progress div{height:100%;background:#244a78;width:0}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}button{border:1px solid #bfc6d1;background:#fff;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}button.primary{background:#244a78;color:white;border-color:#244a78}
 .status{font-size:13px;color:#667085;margin-top:10px}
-.form-author{margin:20px 0 8px;padding:14px 8px;text-align:center;color:#667085;font-size:13px;border-top:1px solid #d8dde6}
-.form-author strong{color:#244a78;margin:0 4px}
 @media(max-width:700px){main{padding:10px}.grid,.grid3{grid-template-columns:1fr}}
 @media print{body{background:#fff}main{max-width:none;padding:0}.actions,.progress,.status,.email-only{display:none!important}section,.head{break-inside:avoid;border:1px solid #999;box-shadow:none}.conditional.show{display:block}input,textarea,select{border:0!important;padding:2px!important;background:transparent!important;color:#000!important}section{break-inside:auto}}
+
+/* Mode jour / nuit */
+body[data-theme="dark"]{background:#111827;color:#e5e7eb}
+body[data-theme="dark"] .head,
+body[data-theme="dark"] section{background:#1f2937;border-color:#374151;color:#e5e7eb}
+body[data-theme="dark"] .muted,
+body[data-theme="dark"] .status{color:#aab4c4}
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea,
+body[data-theme="dark"] select{background:#111827;color:#f3f4f6;border-color:#4b5563}
+body[data-theme="dark"] button:not(.primary){background:#273449;color:#f3f4f6;border-color:#4b5563}
+body[data-theme="dark"] .conditional{background:#273449;border-left-color:#8ab4f8}
+body[data-theme="dark"] .progress{background:#374151}
+.theme-row{display:flex;justify-content:flex-end;margin-bottom:12px}
+#themeToggle{display:inline-flex;align-items:center;gap:8px}
+@media print{
+  body[data-theme="dark"]{background:#fff!important;color:#000!important}
+  body[data-theme="dark"] .head,body[data-theme="dark"] section{background:#fff!important;color:#000!important;border-color:#999!important}
+  body[data-theme="dark"] input,body[data-theme="dark"] textarea,body[data-theme="dark"] select{background:transparent!important;color:#000!important}
+  .theme-row{display:none!important}
+}
+
 </style>
 </head>
 <body>
 <main>
 <div class="head">
+<div class="theme-row"><button id="themeToggle" type="button" aria-pressed="false" onclick="toggleTheme()">🌙 Mode nuit</button></div>
 <h1>FICHE TECHNIQUE DE DÉTACHEMENT USAR</h1>
 <div class="muted">Formulaire dématérialisé interactif — d’après les pages 1 et 2 de l’Annexe B fournie.</div>
 <div class="progress"><div id="bar"></div></div>
@@ -180,14 +201,28 @@ Cordialement.</textarea>
 <p class="status">Étape 1 : dans la rubrique Actions juste au-dessus, cliquez sur « Imprimer / enregistrer en PDF » et enregistrez le fichier sur votre ordinateur. Étape 2 : cliquez sur « Préparer l’e-mail ». Étape 3 : dans Outlook, joignez manuellement le PDF enregistré, puis envoyez le message. Le navigateur ne permet pas à un lien e-mail classique de joindre automatiquement un fichier.</p>
 <div id="emailStatus" class="status" role="status" aria-live="polite"></div>
 </section>
-
-<footer class="form-author" aria-label="Auteur du formulaire">
-  <span>Formulaire conçu par</span>
-  <strong>Marc Louloum</strong>
-  <span>— SDIS 33</span>
-</footer>
 </main>
 <script>
+
+function applyTheme(theme){
+  const dark = theme === 'dark';
+  document.body.dataset.theme = dark ? 'dark' : 'light';
+  const btn = document.getElementById('themeToggle');
+  if(btn){
+    btn.textContent = dark ? '☀️ Mode jour' : '🌙 Mode nuit';
+    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  }
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.setAttribute('content', dark ? '#111827' : '#244a78');
+}
+function toggleTheme(){
+  const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('fiche-usar-theme', next); } catch(e) {}
+}
+try { applyTheme(localStorage.getItem('fiche-usar-theme') || 'light'); }
+catch(e) { applyTheme('light'); }
+
 function radio(n){const e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:''}
 function update(){
  document.getElementById('A5other').classList.toggle('show', document.getElementById('A5').value==='Autre');

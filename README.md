@@ -24,3 +24,6 @@ L'application pourra ensuite être installée depuis un smartphone compatible PW
 
 
 Ordre d’utilisation : remplir la fiche, imprimer/enregistrer en PDF dans Actions, puis préparer l’e-mail à la fin du formulaire. Le PDF doit être joint manuellement dans Outlook.
+
+
+Version complète actualisée : mode jour/nuit avec préférence mémorisée, icône SVG intégrant l’illustration du sauveteur au casque blanc et du Labrador noir au collier jaune, et cache PWA versionné.
